@@ -18,20 +18,20 @@ $(document).ready(function () {
   ];
 
   const stuff = [
-    { name: "super oil tanker ship", mass: Big("650000e3") },
-    { name: "oil tanker ship", mass: Big("300000e3") },
-    { name: "container carrier ship", mass: Big("180000e3") },
-    { name: "cruise ship", mass: Big("170000e3") },
-    { name: "train", mass: Big("600e3") },
-    { name: "Airbus A380", mass: Big("500e3") },
+    { name: "super oil tanker ship", id: 1, mass: Big("650000e3") },
+    { name: "oil tanker ship", id: 2, mass: Big("300000e3") },
+    { name: "container carrier ship", id: 3, mass: Big("180000e3") },
+    { name: "cruise ship", id: 4, mass: Big("170000e3") },
+    { name: "train", id: 5, mass: Big("600e3") },
+    { name: "Airbus A380", id: 6, mass: Big("500e3") },
     //  { name: "Boing 787", mass: Big("200e3") },
-    { name: "metro train", mass: Big("200e3") },
-    { name: "truck", mass: Big("20e3") },
-    { name: "elephant", mass: Big("7e3") },
-    { name: "rhinoceros", mass: Big("3.5e3") },
-    { name: "hippopotamus", mass: Big("2.5e3") },
-    { name: "lion", mass: Big("2.5e2") },
-    { name: "gorilla", mass: Big("2e2") }
+    { name: "metro train", id: 7, mass: Big("200e3") },
+    { name: "truck", id: 8, mass: Big("20e3") },
+    { name: "elephant", id: 9, mass: Big("7e3") },
+    { name: "rhinoceros", id: 10, mass: Big("3.5e3") },
+    { name: "hippopotamus", id: 11, mass: Big("2.5e3") },
+    { name: "lion", id: 12, mass: Big("2.5e2") },
+    { name: "gorilla", id: 13, mass: Big("2e2") }
   ];
 
 
