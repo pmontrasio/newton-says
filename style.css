@@ -45,6 +45,7 @@ p {
 #planets img {
     position: absolute;
     opacity: 0.7;
+    cursor: pointer;
 }
 
 #planets img:hover {

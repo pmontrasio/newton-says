@@ -53,26 +53,36 @@ $(document).ready(function () {
   var selectedPlanet;
   var equivalentDistance;
 
+  function distanceAndForce() {
+    var now = new Date().getTime() / 86400000 + 2440587.5; // Julian day
+    var distanceKm = Big(kmToPlanet(now, selectedPlanet.id));
+    var distance = distanceKm.times(thousand);
+    var planetForce = forceBase.times(selectedPlanet.mass).div(distance).div(distance);
+    var m2kg = forceBase.div(planetForce);
+
+    $("#distance").html(string_thousands(distanceKm.toFixed(0)));
+    // display 5 non zero digits
+    var force = planetForce.toString();
+    var i = 2;
+    for (; i < force.length && force[i] == "0"; i++) {}
+    $("#force").html(force.substr(0, i + 5));
+  }
+
   //for (var planet of planets.values()) {
   planets.forEach(function (planet) {
     planet.img.on("click", function () {
 
-      selectedPlanet = planet.id;
+      selectedPlanet = planet;
       $("#planets").fadeOut({duration: 1000, complete: function () {
         $(".planet-image").attr({src: planet.img.attr("src")});
         $("#selected-planet").fadeIn(1000);
       }});
       $("#question-1").hide();
       $(".planet-name").html(planet.name);
-      $("#question-2").show();
 
-      var now = new Date().getTime() / 86400000 + 2440587.5; // Julian day
-      var distanceKm = Big(kmToPlanet(now, planet.id));
-      var distance = distanceKm.times(thousand);
-      var planetForce = forceBase.times(planet.mass).div(distance).div(distance);
-      var m2kg = forceBase.div(planetForce);
+      setInterval(distanceAndForce, 1000);
 
-      $("#distance").html(string_thousands(distanceKm.toFixed(0)));
+      $(".question-2").show();
     });
   });
 /*
