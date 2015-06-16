@@ -35,6 +35,13 @@ p {
     height: 800px;
 }
 
+#selected-planet {
+    width: 100%;
+    background-color: #000000;
+    text-align: center;
+    display: none;
+}
+
 #planets img {
     position: absolute;
     opacity: 0.7;
@@ -66,6 +73,10 @@ p {
 #planet-uranus { left: 571px; top: 71px; }
 #planet-neptune { left: 752px; top: 16px; }
 #planet-pluto { left: 916px; top: 32px; }
+
+#question-2 {
+    display: none;
+}
 
 .clear-both {
     clear: both;

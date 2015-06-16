@@ -8,18 +8,22 @@
     <script type="text/javascript"
             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="planet.js"></script>
+    <script type="text/javascript" src="newton-client.bundle.js"></script>
   </head>
   <body>
     <h1 class="container">Newton says...</h1>
     <div class="clear-both container">
       <img id="newton-image" src="images/newton.jpg">
-      <p id="newton-formula">$$F = {G \times { {m1 \times m2} \over d^2}}.$$</p>
-      <p>Scary? Don't panic. It means that to know the amount of gravitational force between two objects you multiply the mass of the two objects together (\(m1\) times \(m2\)) then divide the result by the distance between them (\(d\)), and again by the distance. Finally, you multiply by a number called \(G\) which has been given the exact value needed to get the right value for the force. Easy stuff. Let's play with it.</p>
+      <!-- http://ctan.mirror.garr.it/mirrors/CTAN/info/gentle/gentle.pdf -->
+      <p id="newton-formula">$$F = {G \times { {m_1 \times m_2} \over d^2}}$$</p>
+      <p>Scary? Don't panic. It means that to know the amount of gravitational force between two objects you multiply the mass of the two objects together (\(m_1\) times \(m_2\)) then divide the result by the distance between them (\(d\)), and again by the distance. Finally, you multiply by a number called \(G\) which has the exact value needed to get the force right. Easy stuff. Let's play with it.</p>
     </div>
 
     <div class="clear-both container">
       <p class="center">
-        For the first object we pick an average human being, mass \(=\) 70 kg.
+        As the first object we pick an average human being, mass \(=\) 70 kg.
       </p>
       <p class="center">
         <img id="human-image" src="images/human.svg">
@@ -28,8 +32,13 @@
 
     <div class="clear-both container">
       <p class="center">
-        The second object is... pick a planet!
+        The second object is<span id="question-1">... pick a planet!</span>
+        <span class="planet-name"></span>
       </p>
+    </div>
+
+    <div class="clear-both container" id="selected-planet">
+      <img class="planet-image">
     </div>
 
     <div id="planets">
@@ -45,7 +54,8 @@
     </div>
 
     <div class="container">
-      <p class="center">XXXXXXXX in this very moment is at _______ million km from Earth, and keeps moving!</p>
+      <p class="center"><span class="planet-name"></span> in this very moment is at
+        <span id="distance"></span> km from Earth, and keeps moving!</p>
     </div>
 
     <div class="container">

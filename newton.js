@@ -1,5 +1,5 @@
 var Big = require("big.js");
-Big.DP = 40; // 30 digits of precision
+Big.DP = 30; // the digits of precision for divisions
 var Planet = require("./planet.js");
 var printf = require("printf");
 
