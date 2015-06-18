@@ -1,6 +1,6 @@
 var Big = require("big.js");
 Big.DP = 30; // the digits of precision for divisions
-var Planet = require("./planet.js");
+var Planet = require("./planet-node.js");
 var printf = require("printf");
 
 var kmToPlanet = Planet.cwrap("km_to_planet", "number", ["number", "number"]);

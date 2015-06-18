@@ -30,9 +30,7 @@ p {
 
 #planets {
     width: 100%;
-    position: relative;
     background-color: #000000;
-    height: 800px;
 }
 
 #selected-planet {
@@ -43,7 +41,6 @@ p {
 }
 
 #planets img {
-    position: absolute;
     opacity: 0.7;
     cursor: pointer;
 }
@@ -53,9 +50,6 @@ p {
 }
 
 #planets-scale {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     font-size: 16px;
     margin: 4px;
     color: #414042;
@@ -66,16 +60,43 @@ p {
 }
 
 /* TODO use media queries to arrange the planets differently for different screen widths */
-#planet-mercury { left: 0px; top: 670px; }
-#planet-venus { left: 128px; top: 451px; }
-#planet-mars { left: 498px; top: 552px; z-index: 1}
-#planet-jupiter { left: 610px; top: 224px; }
-#planet-saturn { left: -20px; top: 123px; }
-#planet-uranus { left: 571px; top: 71px; }
-#planet-neptune { left: 752px; top: 16px; }
-#planet-pluto { left: 916px; top: 32px; }
+@media screen and (max-width: 1000px) {
+    #planets { text-align: center; }
+    #planets-scale { display: block; text-align: right; }
+}
+/*
+@media screen and (min-width: 930px) and (max-width: 1000px) {
+    #planets { position: relative; height: 1000px }
+    #planets img { position: absolute; }
+    #planet-mercury { left: 0px; top: 870px; }
+    #planet-venus { left: 19%; top: 651px; z-index: 2}
+    #planet-mars { left: 70%; top: 794px; z-index: 3}
+    #planet-jupiter { left: 44%; top: 276px; z-index: 1}
+    #planet-saturn { left: -20px; top: 48px; }
+    #planet-uranus { left: 57%; top: 127px; }
+    #planet-neptune { left: 72%; top: 16px; }
+    #planet-pluto { left: 91%; top: 32px; }
+}
+*/
+@media screen and (min-width: 1000px) {
+    #planets { position: relative;  height: 800px; }
+    #planets img { position: absolute; }
+    #planet-mercury { left: 0px; top: 670px; }
+    #planet-venus { left: 13%; top: 451px; }
+    #planet-mars { left: 50%; top: 552px; z-index: 1}
+    #planet-jupiter { left: 61%; top: 224px; }
+    #planet-saturn { left: -20px; top: 123px; }
+    #planet-uranus { left: 57%; top: 71px; }
+    #planet-neptune { left: 75%; top: 16px; }
+    #planet-pluto { left: 91%; top: 32px; }
+    #planets-scale {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
 
-#question-2 {
+.question-2 {
     display: none;
 }
 
