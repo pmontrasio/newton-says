@@ -62,7 +62,7 @@ $(document).ready(function () {
 
     $("#distance").html(string_thousands(distanceKm.toFixed(0)));
     // display 5 non zero digits
-    var force = planetForce.toString();
+    var force = planetForce.toFixed(20);
     var i = 2;
     for (; i < force.length && force[i] == "0"; i++) {}
     $("#force").html(force.substr(0, i + 5));
