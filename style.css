@@ -1,6 +1,6 @@
 body {
     font-family: "Lato", Arial, Helvetica, "Sans Serif";
-    font-size: 18px;
+    font-size: 22px;
     background-color: #414042;
     color: #ffffff;
     margin: 0;
@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    line-height: 28px;
+    line-height: 32px;
 }
 
 #newton-image {
@@ -69,6 +69,8 @@ p {
     top: 0;
     right: 0;
     color: #fff5d2;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 /* TODO use media queries to arrange the planets differently for different screen widths */
@@ -120,6 +122,10 @@ p {
 .container {
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .center {

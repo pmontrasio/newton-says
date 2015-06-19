@@ -73,13 +73,24 @@ $(document).ready(function () {
     planet.img.on("click", function () {
 
       selectedPlanet = planet;
+      $("html, body").animate({ scrollTop: $("#first-object").offset().top }, 500);
       $("#planets").fadeOut({duration: 1000, complete: function () {
         $(".planet-image").attr({src: planet.img.attr("src")});
         $("#selected-planet").fadeIn({duration: 1000, complete: function () {
           $(".planet-name").html(planet.name);
           $("#question-1").hide();
-          $(".question-2").show();
-          setInterval(distanceAndForce, 1000);
+          distanceAndForce();
+          $(".question-2").fadeIn(250);
+          $("#reset-planet").on("click", function () {
+            clearInterval(updateDistanceAndForce);
+            selectedPlanet = undefined;
+            $(".planet-name").html("");
+            $("#selected-planet").fadeOut(250);
+            $(".question-2").fadeOut(250);
+            $("#question-1").fadeIn(250);
+            $("#planets").fadeIn(250);
+          });
+          var updateDistanceAndForce = setInterval(distanceAndForce, 1000);
         }});
       }});
     });

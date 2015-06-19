@@ -21,7 +21,7 @@
       <p>Scary? Don't panic. It means that to know the amount of gravitational force between two objects you multiply the mass of the two objects together (\(m_1\) times \(m_2\)) then divide the result by the distance between them (\(d\)), and again by the distance. Finally, you multiply by a number called \(G\) which has the exact value needed to get the force right. Easy stuff. Let's play with it.</p>
     </div>
 
-    <div class="clear-both container">
+    <div id="first-object" class="clear-both container">
       <p class="center">
         As the first object we pick an average human being, mass \(=\) 70 kg
       </p>
@@ -33,9 +33,9 @@
     <div id="second-object" class="clear-both container">
       <p class="center">
         The second object is<span id="question-1">... pick a planet!</span>
-        <span class="planet-name"></span>
+        <span class="planet-name bold"></span>
       </p>
-      <p class="question-2" id="reset-planet">(or change planet)</p>
+      <p class="question-2" id="reset-planet">change planet</p>
     </div>
 
     <div class="clear-both" id="selected-planet">
@@ -56,7 +56,7 @@
 
     <div class="container question-2">
       <p class="center">At this very moment <span class="planet-name"></span> is at
-        <span id="distance"></span> km from Earth and keeps moving!</p>
+        <span id="distance" class="bold"></span> km from Earth and keeps moving!</p>
     </div>
 
     <div class="container question-2">
