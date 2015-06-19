@@ -30,8 +30,8 @@ $(document).ready(function () {
     { name: "elephant", id: 9, mass: Big("7e3") },
     { name: "rhinoceros", id: 10, mass: Big("3.5e3") },
     { name: "hippopotamus", id: 11, mass: Big("2.5e3") },
-    { name: "lion", id: 12, mass: Big("2.5e2") },
-    { name: "gorilla", id: 13, mass: Big("2e2") }
+    { name: "crocodile", id: 12, mass: Big("1e3") },
+    { name: "lion", id: 13, mass: Big("2.5e2") }
   ];
 
   const G = Big("6.67384e-11");
@@ -72,12 +72,12 @@ $(document).ready(function () {
     planet.img.on("click", function () {
 
       selectedPlanet = planet;
+      $("#question-1").hide();
+      $(".planet-name").html(planet.name);
       $("html, body").animate({ scrollTop: $("#first-object").offset().top }, 500);
       $("#planets").fadeOut({duration: 1000, complete: function () {
         $(".planet-image").attr({src: planet.img.attr("src")});
         $("#selected-planet").fadeIn({duration: 1000, complete: function () {
-          $(".planet-name").html(planet.name);
-          $("#question-1").hide();
           distanceAndForce();
           $(".question-2").fadeIn(250);
           $("#reset-planet").on("click", function () {

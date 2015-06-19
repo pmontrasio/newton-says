@@ -97,7 +97,15 @@ p {
 }
 
 #large-animals {
-    background-color: #389F92;
+    background-color: #CDE2BA;
+}
+
+.show {
+    display: inline;
+}
+
+.hide {
+    display: none;
 }
 
 /* TODO use media queries to arrange the planets differently for different screen widths */
