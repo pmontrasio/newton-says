@@ -101,13 +101,25 @@ $(document).ready(function () {
 
   $(".objects img").on("click", function () {
     var element = $(this);
-    element.css({perspective: 1000, transform: "rotateY(360deg)",
-                 transition: "1.0s", "transform-style": "preserve-3d" });
+    var transform1 = "rotateY(360deg)";
+    var transition1Speed = "1.0s";
+    var transform2 = "rotateY(0deg)";
+    var transition2Speed = "0.0s";
+    var delay = 1100;
+    if (element.hasClass("rotate-x")) {
+      transform1 = "rotateX(60deg)";
+      transition1Speed = "0.25s";
+      transform2 = "rotateX(0deg)";
+      transition2Speed = "0.25s";
+      delay = 260;
+    }
+    element.css({perspective: 1000, transform: transform1,
+                 transition: transition1Speed, "transform-style": "preserve-3d" });
     // and reset the rotation to be able to rotate element again
     setTimeout(function() {
-      element.css({perspective: 1000, transform: "rotateY(0deg)",
-                   transition: "0.0s", "transform-style": "preserve-3d" });
-    }, 1100);
+      element.css({perspective: 1000, transform: transform2,
+                   transition: transition2Speed, "transform-style": "preserve-3d" });
+    }, delay);
   });
 /*
   for (var planet of planets.values()) {
