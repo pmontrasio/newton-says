@@ -120,8 +120,15 @@ p {
     margin: 0;
 }
 
+#credits .title-large {
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 30px;
+}
+
 #credits .title {
     font-weight: bold;
+    padding-top: 30px;
 }
 
 #credits a {
