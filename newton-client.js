@@ -34,7 +34,6 @@ $(document).ready(function () {
     { name: "gorilla", id: 13, mass: Big("2e2") }
   ];
 
-
   const G = Big("6.67384e-11");
   const personMass = Big(70);
   const forceBase = G.times(personMass);
@@ -94,6 +93,21 @@ $(document).ready(function () {
         }});
       }});
     });
+  });
+
+  stuff.forEach(function (thing) {
+    $(".stuff-" + thing.id).html(string_thousands(thing.mass.toFixed(0)));
+  });
+
+  $(".objects img").on("click", function () {
+    var element = $(this);
+    element.css({perspective: 1000, transform: "rotateY(360deg)",
+                 transition: "1.0s", "transform-style": "preserve-3d" });
+    // and reset the rotation to be able to rotate element again
+    setTimeout(function() {
+      element.css({perspective: 1000, transform: "rotateY(0deg)",
+                   transition: "0.0s", "transform-style": "preserve-3d" });
+    }, 1100);
   });
 /*
   for (var planet of planets.values()) {
