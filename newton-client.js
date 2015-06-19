@@ -75,14 +75,13 @@ $(document).ready(function () {
       selectedPlanet = planet;
       $("#planets").fadeOut({duration: 1000, complete: function () {
         $(".planet-image").attr({src: planet.img.attr("src")});
-        $("#selected-planet").fadeIn(1000);
+        $("#selected-planet").fadeIn({duration: 1000, complete: function () {
+          $(".planet-name").html(planet.name);
+          $("#question-1").hide();
+          $(".question-2").show();
+          setInterval(distanceAndForce, 1000);
+        }});
       }});
-      $("#question-1").hide();
-      $(".planet-name").html(planet.name);
-
-      setInterval(distanceAndForce, 1000);
-
-      $(".question-2").show();
     });
   });
 /*

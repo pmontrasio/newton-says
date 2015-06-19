@@ -59,6 +59,18 @@ p {
     color: #fff5d2;
 }
 
+#second-object {
+    position: relative;
+}
+
+#reset-planet {
+    position: absolute;
+    text-align: right;
+    top: 0;
+    right: 0;
+    color: #fff5d2;
+}
+
 /* TODO use media queries to arrange the planets differently for different screen widths */
 @media screen and (max-width: 1000px) {
     #planets { text-align: center; }
