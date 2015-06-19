@@ -98,6 +98,7 @@ p {
 
 #large-animals {
     background-color: #CDE2BA;
+    color: #414042;
 }
 
 .show {
@@ -106,6 +107,33 @@ p {
 
 .hide {
     display: none;
+}
+
+#credits {
+    padding: 50px 20px 20px 20px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #888;
+}
+
+#credits p {
+    margin: 0;
+}
+
+#credits .title {
+    font-weight: bold;
+}
+
+#credits a {
+    color: #888;
+}
+
+#credits a:visited {
+    color: #888;
+}
+
+#credits a:hover {
+    color: #FFF5D2;
 }
 
 /* TODO use media queries to arrange the planets differently for different screen widths */
