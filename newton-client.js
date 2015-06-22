@@ -16,26 +16,29 @@ $(document).ready(function () {
     { name: "Pluto", id: 9, mass: Big("1.305e22"), img: $("#planet-pluto") }
   ];
 
+  // display the object if it's gravitational pull >= the one of the planet at X meters
+  const distanceThreshold = { "large-objects": 100, "medium-objects": 100, "large-animals": 10 };
+
   const stuff = [
-    { name: "super oil tanker ship", id: 1, mass: Big("650000e3") },
-    { name: "oil tanker ship", id: 2, mass: Big("300000e3") },
-    { name: "container carrier ship", id: 3, mass: Big("180000e3") },
-    { name: "cruise ship", id: 4, mass: Big("170000e3") },
-    { name: "train", id: 5, mass: Big("600e3") },
-    { name: "Airbus A380", id: 6, mass: Big("500e3") },
-    { name: "metro train", id: 7, mass: Big("200e3") },
-    { name: "truck", id: 8, mass: Big("20e3") },
-    { name: "blue whale", id: 9, mass: Big("19e3") },
-    { name: "elephant", id: 10, mass: Big("7e3") },
-    { name: "rhinoceros", id: 11, mass: Big("3.5e3") },
-    { name: "hippopotamus", id: 12, mass: Big("2.5e3") },
-    { name: "crocodile", id: 13, mass: Big("1e3") },
-    { name: "lion", id: 14, mass: Big("2.5e2") }
+    { name: "A super oil tanker ship", id: 1, mass: Big("650000e3"), objClass: "large-objects" },
+    { name: "An oil tanker ship", id: 2, mass: Big("300000e3"), objClass: "large-objects" },
+    { name: "A container carrier ship", id: 3, mass: Big("180000e3"), objClass: "large-objects" },
+    { name: "A cruise ship", id: 4, mass: Big("170000e3"), objClass: "large-objects" },
+    { name: "A train", id: 5, mass: Big("600e3"), objClass: "medium-objects" },
+    { name: "An Airbus A380", id: 6, mass: Big("500e3"), objClass: "medium-objects" },
+    { name: "A metro train", id: 7, mass: Big("200e3"), objClass: "medium-objects" },
+    { name: "A truck", id: 8, mass: Big("20e3"), objClass: "medium-objects" },
+    { name: "A blue whale", id: 9, mass: Big("19e3"), objClass: "large-animals" },
+    { name: "An elephant", id: 10, mass: Big("7e3"), objClass: "large-animals" },
+    { name: "A rhinoceros", id: 11, mass: Big("3.5e3"), objClass: "large-animals" },
+    { name: "A hippopotamus", id: 12, mass: Big("2.5e3"), objClass: "large-animals" },
+    { name: "A crocodile", id: 13, mass: Big("1e3"), objClass: "large-animals" },
+    { name: "A lion", id: 14, mass: Big("2.5e2"), objClass: "large-animals" }
   ];
 
-  var compute = new Array(stuff.length);
-  for (var i = 0; i < compute.length; i++) {
-    compute[i] = false;
+  var stuffStatus = new Array(stuff.length + 1);
+  for (var i = 1; i <= stuff.length; i++) { // btw, use stuffStatus.length here to make an infinite loop :-)
+    stuffStatus[i] = { visible: false, compute: false };
   }
 
   const G = Big("6.67384e-11");
@@ -56,6 +59,23 @@ $(document).ready(function () {
   var selectedPlanet;
   var equivalentDistance;
 
+  function showForce(id, distance) {
+    var distanceInMillimeters = distance.times(1000).toFixed(0);
+    var thousandifiedDistance = string_thousands(distanceInMillimeters);
+    var decimalPointIndex = thousandifiedDistance.lastIndexOf(",");
+    var distanceInMeters = thousandifiedDistance.substr(0, decimalPointIndex) + "." + thousandifiedDistance.substr(decimalPointIndex + 1, thousandifiedDistance.length);
+    $("#stuff-" + id + " .force").html("at " + distanceInMeters + " m");
+  }
+
+  function hideForce(id) {
+    $("#stuff-" + id + " .force").html("");
+  }
+
+  // print "number" with "digits" decimal digits
+  function printDecimal(number, digits) {
+    return number.toFixed(digits);
+  }
+
   function distanceAndForce() {
     var now = new Date().getTime() / 86400000 + 2440587.5; // Julian day
     var distanceKm = Big(kmToPlanet(now, selectedPlanet.id));
@@ -70,15 +90,14 @@ $(document).ready(function () {
     for (; i < force.length && force[i] == "0"; i++) {}
     $("#force").html(force.substr(0, i + 5));
 
-/**/
     stuff.forEach(function (thing) {
-      if (compute[thing.id]) {
+      if (stuffStatus[thing.id].compute) {
         equivalentDistance = m2kg.times(thing.mass).sqrt();
+        showForce(thing.id, equivalentDistance);
         //console.log(printf("  %22s at %22.14f m", thing.name, equivalentDistance));
         // TODO update the distance of the thing
       }
     });
-/**/
   }
 
   //for (var planet of planets.values()) {
@@ -94,6 +113,9 @@ $(document).ready(function () {
         $("#selected-planet").fadeIn({duration: 1000, complete: function () {
           distanceAndForce();
           $(".question-2").fadeIn(250);
+          $("#large-objects").fadeIn(250);
+          $("#medium-objects").fadeIn(250);
+          $("#large-animals").fadeIn(250);
           $("#reset-planet").on("click", function () {
             clearInterval(updateDistanceAndForce);
             selectedPlanet = undefined;
@@ -102,6 +124,9 @@ $(document).ready(function () {
             $(".question-2").fadeOut(250);
             $("#question-1").fadeIn(250);
             $("#planets").fadeIn(250);
+            $("#large-objects").fadeOut(250);
+            $("#medium-objects").fadeOut(250);
+            $("#large-animals").fadeOut(250);
           });
           var updateDistanceAndForce = setInterval(distanceAndForce, 1000);
         }});
@@ -110,7 +135,7 @@ $(document).ready(function () {
   });
 
   stuff.forEach(function (thing) {
-    $("#stuff-" + thing.id).html(string_thousands(thing.mass.toFixed(0)));
+    $("#stuff-" + thing.id + " span.kg").html(string_thousands(thing.mass.toFixed(0)) + " kg");
   });
 
   $(".objects img").on("click", function () {
@@ -138,10 +163,10 @@ $(document).ready(function () {
     var id = parseInt(element.data("stuff"), 10);
     // se è compute false, significa che era visibile ma non ancora cliccato e quindi niente distanza: si mostra la distanza
     // se è compute true, aveva la distanza calcolata: si nasconde
-    compute[id] = !compute[id];
-    if (compute[id]) {
-      // TODO fadeIn the distance display for the thing
-    } else {
+    var compute = !stuffStatus[id].compute;
+    stuffStatus[id].compute = compute;
+    if (!compute) {
+      hideForce(id);
       // TODO fadeOut the thing, hide the distance display for the thing, show the more things prompt
     }
   });

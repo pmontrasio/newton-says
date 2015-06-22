@@ -82,24 +82,43 @@ p {
 
 .objects p {
     margin: 0;
-    padding: 22px 0 22px 0;
+    padding: 44px 0 66px 0;
 }
 
 #large-objects {
+    display: none;
+    padding-top: 22px;
 }
 
 #medium-objects {
+    display: none;
+    padding-top: 22px;
     background-color: #84BEC2;
     color: #FFF5D2;
 }
 
 #large-animals {
+    display: none;
+    padding-top: 22px;
     background-color: #CDE2BA;
     color: #414042;
 }
 
+.kg {
+    display: block;
+    margin-top: 22px;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.force {
+    display: block;
+    margin-top: 22px;
+    font-size: 150%;
+    font-weight: bold;
+}
+
 .show {
-    display: inline;
 }
 
 .hide {
@@ -138,6 +157,48 @@ p {
 
 #credits a:hover {
     color: #FFF5D2;
+}
+
+#large-objects .more a {
+    color: #FFF5D2;
+    text-decoration: none;
+}
+
+#large-objects .more a:visited {
+    color: #FFF5D2;
+}
+
+#large-objects .more a:hover {
+    color: #FFF5D2;
+    text-decoration: underline;
+}
+
+#medium-objects .more a {
+    color: #FFF5D2;
+    text-decoration: none;
+}
+
+#medium-objects .more a:visited {
+    color: #FFF5D2;
+}
+
+#medium-objects .more a:hover {
+    color: #FFF5D2;
+    text-decoration: underline;
+}
+
+#large-animals .more a {
+    color: #414042;
+    text-decoration: none;
+}
+
+#large-animals .more a:visited {
+    color: #414042;
+}
+
+#large-animals .more a:hover {
+    color: #414042;
+    text-decoration: underline;
 }
 
 /* TODO use media queries to arrange the planets differently for different screen widths */
