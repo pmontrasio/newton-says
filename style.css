@@ -65,12 +65,9 @@ p {
 
 #reset-planet {
     position: absolute;
-    text-align: right;
     top: 0;
     right: 0;
-    color: #FFF5D2;
     cursor: pointer;
-    font-size: 16px;
 }
 
 #what {
@@ -200,4 +197,16 @@ p {
 
 .center {
     text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.small {
+    font-size: 70%;
+}
+
+.color-2 {
+    color: #FFF5D2;
 }

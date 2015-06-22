@@ -1,7 +1,6 @@
 $(document).ready(function () {
   var Big = require("big.js");
   Big.DP = 30; // the digits of precision for divisions
-  //var Planet = require("./planet.js");
   var printf = require("printf");
 
   var kmToPlanet = Module().cwrap("km_to_planet", "number", ["number", "number"]);
@@ -24,15 +23,20 @@ $(document).ready(function () {
     { name: "cruise ship", id: 4, mass: Big("170000e3") },
     { name: "train", id: 5, mass: Big("600e3") },
     { name: "Airbus A380", id: 6, mass: Big("500e3") },
-    //  { name: "Boing 787", mass: Big("200e3") },
     { name: "metro train", id: 7, mass: Big("200e3") },
     { name: "truck", id: 8, mass: Big("20e3") },
-    { name: "elephant", id: 9, mass: Big("7e3") },
-    { name: "rhinoceros", id: 10, mass: Big("3.5e3") },
-    { name: "hippopotamus", id: 11, mass: Big("2.5e3") },
-    { name: "crocodile", id: 12, mass: Big("1e3") },
-    { name: "lion", id: 13, mass: Big("2.5e2") }
+    { name: "blue whale", id: 9, mass: Big("19e3") },
+    { name: "elephant", id: 10, mass: Big("7e3") },
+    { name: "rhinoceros", id: 11, mass: Big("3.5e3") },
+    { name: "hippopotamus", id: 12, mass: Big("2.5e3") },
+    { name: "crocodile", id: 13, mass: Big("1e3") },
+    { name: "lion", id: 14, mass: Big("2.5e2") }
   ];
+
+  var compute = new Array(stuff.length);
+  for (var i = 0; i < compute.length; i++) {
+    compute[i] = false;
+  }
 
   const G = Big("6.67384e-11");
   const personMass = Big(70);
@@ -65,6 +69,16 @@ $(document).ready(function () {
     var i = 2;
     for (; i < force.length && force[i] == "0"; i++) {}
     $("#force").html(force.substr(0, i + 5));
+
+/**/
+    stuff.forEach(function (thing) {
+      if (compute[thing.id]) {
+        equivalentDistance = m2kg.times(thing.mass).sqrt();
+        //console.log(printf("  %22s at %22.14f m", thing.name, equivalentDistance));
+        // TODO update the distance of the thing
+      }
+    });
+/**/
   }
 
   //for (var planet of planets.values()) {
@@ -96,7 +110,7 @@ $(document).ready(function () {
   });
 
   stuff.forEach(function (thing) {
-    $(".stuff-" + thing.id).html(string_thousands(thing.mass.toFixed(0)));
+    $("#stuff-" + thing.id).html(string_thousands(thing.mass.toFixed(0)));
   });
 
   $(".objects img").on("click", function () {
@@ -120,22 +134,17 @@ $(document).ready(function () {
       element.css({perspective: 1000, transform: transform2,
                    transition: transition2Speed, "transform-style": "preserve-3d" });
     }, delay);
-  });
-/*
-  for (var planet of planets.values()) {
-    distanceKm = Big(kmToPlanet(now, planet.id));
-    distance = distanceKm.times(thousand);
-    planetForce = forceBase.times(planet.mass).div(distance).div(distance);
 
-    console.log(printf("\n%7s: distance %13s km, force %14.14f N. Equivalent to:",
-                       planet.name, string_thousands(distanceKm.toFixed(0)), planetForce));
-
-    m2kg = forceBase.div(planetForce);
-
-    for (var thing of stuff.values()) {
-      equivalentDistance = m2kg.times(thing.mass).sqrt();
-      console.log(printf("  %22s at %22.14f m", thing.name, equivalentDistance));
+    var id = parseInt(element.data("stuff"), 10);
+    // se è compute false, significa che era visibile ma non ancora cliccato e quindi niente distanza: si mostra la distanza
+    // se è compute true, aveva la distanza calcolata: si nasconde
+    compute[id] = !compute[id];
+    if (compute[id]) {
+      // TODO fadeIn the distance display for the thing
+    } else {
+      // TODO fadeOut the thing, hide the distance display for the thing, show the more things prompt
     }
-  }
-*/
+  });
+
+  // TODO click sui more things prompts
 });

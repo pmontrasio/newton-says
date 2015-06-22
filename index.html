@@ -35,7 +35,7 @@
         The second object is<span id="question-1">... pick a planet!</span>
         <span class="planet-name bold"></span>
       </p>
-      <p class="question-2" id="reset-planet">change planet</p>
+      <p class="question-2 small color-2" id="reset-planet">change planet</p>
     </div>
 
     <div class="clear-both" id="selected-planet">
@@ -64,92 +64,101 @@
         <span id="force"></span>
         <span title="N is the unit of measurement of force. Its name is Newton. How appropriate!">N</span>
         if you like numbers.</p>
+      <p class="center small color-2">As a comparison, a 1 liter bottle of water pushes down against your hand with a force of about 10 N.</p>
     </div>
 
     <div class="question-2" id="what">
       <h1 class="center">What does it compare to?</h1>
-      <p class="center">That's the gravitational pull of... what? The fun begins. Pick any of the objects below.</p>
+      <p class="center">What moving objects on Earth have a similar gravitational pull on us?</p>
+      <p class="center">The fun begins. Pick any of the objects below.</p>
     </div>
 
     <div id="large-objects" class="objects center">
       <p class="show">
         The largest oil tanker in the world, fully loaded:
-        <span class="stuff-1"></span> kg<br>
-        <img src="images/super-tanker.png">
+        <span id="stuff-1"></span> kg<br>
+        <img src="images/super-tanker.png" data-stuff="1">
       </p>
 
       <p class="hide">
         A typical oil tanker, fully loaded:
-        <span class="stuff-2"></span> kg<br>
-        <img src="images/standard-tanker.png">
+        <span id="stuff-2"></span> kg<br>
+        <img src="images/standard-tanker.png" data-stuff="2">
       </p>
 
       <p class="hide">
         A carrier ship, fully loaded:
-        <span class="stuff-3"></span> kg<br>
-        <img src="images/carrier.png">
+        <span id="stuff-3"></span> kg<br>
+        <img src="images/carrier.png" data-stuff="3">
       </p>
 
       <p class="hide">
         A cruise ship, fully loaded:
-        <span class="stuff-4"></span> kg<br>
-        <img src="images/cruise-ship.png">
+        <span id="stuff-4"></span> kg<br>
+        <img src="images/cruise-ship.png" data-stuff="4">
       </p>
     </div>
     <div id="medium-objects" class="objects center">
       <p class="show">
         A train, with passengers:
-        <span class="stuff-5"></span> kg<br>
-        <img src="images/train.png">
+        <span id="stuff-5"></span> kg<br>
+        <img src="images/train.png" data-stuff="5">
       </p>
 
       <p class="hide">
         An Airbus380, with passengers and fuel:
-        <span class="stuff-6"></span> kg<br>
-        <img src="images/a380.png" class="rotate-x">
+        <span id="stuff-6"></span> kg<br>
+        <img src="images/a380.png" class="rotate-x" data-stuff="6">
       </p>
 
       <p class="hide">
         A metro train, with passengers:
-        <span class="stuff-7"></span> kg<br>
-        <img src="images/metro.png"><img src="images/metro.png"><img src="images/metro.png">
+        <span id="stuff-7"></span> kg<br>
+        <img src="images/metro.png" data-stuff="7"><img src="images/metro.png" data-stuff="7"><img src="images/metro.png" data-stuff="7">
       </p>
 
       <p class="hide">
         A truck, reasonably loaded:
-        <span class="stuff-8"></span> kg<br>
-        <img src="images/truck.png">
+        <span id="stuff-8"></span> kg<br>
+        <img src="images/truck.png" data-stuff="8">
       </p>
     </div>
+
     <div id="large-animals" class="objects center">
       <p class="show">
+        A blue whale:
+        <span id="stuff-9"></span> kg<br>
+        <img src="images/whale.png" data-stuff="9">
+      </p>
+
+      <p class="hide">
         An elephant:
-        <span class="stuff-9"></span> kg<br>
-        <img src="images/elephant.png">
+        <span id="stuff-10"></span> kg<br>
+        <img src="images/elephant.png" data-stuff="10">
       </p>
 
       <p class="hide">
         A rhino:
-        <span class="stuff-10"></span> kg<br>
-        <img src="images/rhino.png">
+        <span id="stuff-11"></span> kg<br>
+        <img src="images/rhino.png" data-stuff="11">
       </p>
 
       <p class="hide">
         A hippo:
-        <span class="stuff-11"></span> kg<br>
-        <img src="images/hippo.png">
+        <span id="stuff-12"></span> kg<br>
+        <img src="images/hippo.png" data-stuff="12">
       </p>
 
       <p class="hide">
         A crocodile:
-        <span class="stuff-12"></span> kg<br>
-        <img src="images/crocodile.png">
+        <span id="stuff-13"></span> kg<br>
+        <img src="images/crocodile.png" data-stuff="13">
       </p>
 
       <p class="hide">
         A lion:
-        <span class="stuff-13"></span> kg<br>
-        <img src="images/lion.png">
+        <span id="stuff-14"></span> kg<br>
+        <img src="images/lion.png" data-stuff="14">
       </p>
 
     </div>
@@ -162,17 +171,23 @@
         Mercury, Venus, Mars: <a href="https://en.wikipedia.org/wiki/File:Terrestrial_planet_sizes.jpg">source</a> (public domain.) Jupiter, Saturn, Uranus, Neptune: <a href="https://en.wikipedia.org/wiki/File:Gas_giants_in_the_solar_system.jpg">source</a> (public domain.)
         Pluto: <a href="https://en.wikipedia.org/wiki/File:EightTNOs.png">source</a> and <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">license</a>.
         Oil tankers and carrier ships: <a href="http://www.vecteezy.com/vector-art/83755-colorful-container-ships">momentbloom/Vecteezy.com</a>.
-      Cruise ship: <a href="http://www.vecteezy.com/vector-art/87295-ship-vector-sets">lavarmsg/Vecteezy.com</a>.
-      Train: <a href="http://www.freepik.com/free-vector/a-wide-range-of-transport-vector_582307.htm">vector designed by Freepik</a>.
-      A380: <a href="http://www.vecteezy.com/vector-art/74795-flying-plane-vector">freevector/Vecteezy.com</a>.
-      Metro: <a href="https://simple.wikipedia.org/wiki/File:London_Underground_2009_Stock.PNG">source</a> and <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">license</a>.
-      Truck: <a href="http://www.freepik.com/free-vector/trailer-truck_762513.htm">vector designed by Freepik</a>.
-      Animals: <a target="_blank" href="https://www.vectoropenstock.com/vectors/preview/71474/cartoon-domestic-and-wild-animals-pack"> Cartoon domestic and wild animals pack </a> | Free vector by <a target="_blank" href="https://www.vectoropenstock.com/">Vector Open Stock</a>.
+        Cruise ship: <a href="http://www.vecteezy.com/vector-art/87295-ship-vector-sets">lavarmsg/Vecteezy.com</a>.
+        Train: <a href="http://www.freepik.com/free-vector/a-wide-range-of-transport-vector_582307.htm">vector designed by Freepik</a>.
+        A380: <a href="http://www.vecteezy.com/vector-art/74795-flying-plane-vector">freevector/Vecteezy.com</a>.
+        Metro: <a href="https://simple.wikipedia.org/wiki/File:London_Underground_2009_Stock.PNG">source</a> and <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">license</a>.
+        Truck: <a href="http://www.freepik.com/free-vector/trailer-truck_762513.htm">vector designed by Freepik</a>.
+        The whale: <a href="https://pixabay.com/en/blue-whale-large-fish-marine-life-34580/">source</a> and <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">license</a>.
+        The other animals: <a target="_blank" href="https://www.vectoropenstock.com/vectors/preview/71474/cartoon-domestic-and-wild-animals-pack"> Cartoon domestic and wild animals pack </a>, free vector by <a target="_blank" href="https://www.vectoropenstock.com/">Vector Open Stock</a>.
       </p>
 
       <p class="title">Source code</p>
-      <p>The algorithm for the distance of planets from Earth: extracted from the Debian package <a href="https://packages.debian.org/source/sid/astronomical-almanac">astronomical-almanac 5.6</a> copyright &copy; 2005 by Stephen L. Moshier and licensed under <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">version 2.0 of the GNU General Public License</a>. The other source code of this page (JavaScript, HTML, CSS) copyright &copy; 2015 by Paolo Montrasio and licensed under <a href="http://www.gnu.org/licenses/agpl-3.0.en.html">GNU Affero General Public License version 3</a>.</p>
+      <p>The algorithm for the distance of planets from Earth: extracted from the Debian package <a href="https://packages.debian.org/source/sid/astronomical-almanac">astronomical-almanac 5.6</a> copyright &copy; 2005 by Stephen L. Moshier and licensed under <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">version 2.0 of the GNU General Public License</a>. The other source code of this page (JavaScript, HTML, CSS) copyright &copy; 2015 by Paolo Montrasio and licensed under <a href="http://www.gnu.org/licenses/agpl-3.0.en.html">GNU Affero General Public License version 3</a>. Also using <a href="https://github.com/MikeMcl/big.js/">big.js</a>, <a href="https://github.com/wdavidw/node-printf">printf</a> and a number thousandification snippet from <a href="http://yal.cc/string_thousands/">here</a>.</p>
+
+      <p class="title">Misc</p>
+      <p>The mass of planets, objects and animals: from various Wikipedia pages. Absolute precision is not required for the purpose of this page. Research them yourself if you need truly correct values.</p>
+
     </div>
+
 
   </body>
 </html>
