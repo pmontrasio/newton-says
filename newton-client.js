@@ -21,14 +21,16 @@ $(document).ready(function () {
   const distanceThreshold = { "large-objects": 100, "medium-objects": 100, "large-animals": 10 };
 
   const stuff = [
-    { name: "A super oil tanker ship", id: 1, mass: Big("650000e3"), objClass: "large-objects" },
-    { name: "An oil tanker ship", id: 2, mass: Big("300000e3"), objClass: "large-objects" },
-    { name: "A container carrier ship", id: 3, mass: Big("180000e3"), objClass: "large-objects" },
-    { name: "A cruise ship", id: 4, mass: Big("170000e3"), objClass: "large-objects" },
+    { name: "A super oil tanker ship", id: 1, mass: Big("650e6"), objClass: "large-objects" },
+    { name: "An oil tanker ship", id: 2, mass: Big("300e6"), objClass: "large-objects" },
+    { name: "A container carrier ship", id: 3, mass: Big("180e6"), objClass: "large-objects" },
+    { name: "A cruise ship", id: 4, mass: Big("170e6"), objClass: "large-objects" },
+
     { name: "A train", id: 5, mass: Big("600e3"), objClass: "medium-objects" },
     { name: "An Airbus A380", id: 6, mass: Big("500e3"), objClass: "medium-objects" },
     { name: "A metro train", id: 7, mass: Big("200e3"), objClass: "medium-objects" },
     { name: "A truck", id: 8, mass: Big("20e3"), objClass: "medium-objects" },
+
     { name: "A blue whale", id: 9, mass: Big("19e3"), objClass: "large-animals" },
     { name: "An elephant", id: 10, mass: Big("7e3"), objClass: "large-animals" },
     { name: "A rhinoceros", id: 11, mass: Big("3.5e3"), objClass: "large-animals" },
@@ -37,10 +39,18 @@ $(document).ready(function () {
     { name: "A lion", id: 14, mass: Big("2.5e2"), objClass: "large-animals" }
   ];
 
-  var stuffStatus = new Array(stuff.length + 1);
-  for (var i = 1; i <= stuff.length; i++) { // btw, use stuffStatus.length here to make an infinite loop :-)
-    stuffStatus[i] = { visible: false, compute: false };
+  function resetStuffStatus(stuff) {
+    var stuffStatus = new Array(stuff.length + 1);
+    for (var i = 1; i <= stuff.length; i++) { // btw, use stuffStatus.length here to make an infinite loop :-)
+      stuffStatus[i] = { visible: false, compute: false };
+    }
+    stuffStatus[1].visible = true;
+    stuffStatus[5].visible = true;
+    stuffStatus[9].visible = true;
+    return stuffStatus;
   }
+
+  var stuffStatus = resetStuffStatus(stuff);
 
   const G = Big("6.67384e-11");
   const personMass = Big(70);
@@ -60,16 +70,40 @@ $(document).ready(function () {
   var selectedPlanet;
   var equivalentDistance;
 
-  function showForce(id, distance) {
-    var distanceInMillimeters = distance.times(1000).toFixed(0);
-    var thousandifiedDistance = string_thousands(distanceInMillimeters);
-    var decimalPointIndex = thousandifiedDistance.lastIndexOf(",");
-    var distanceInMeters = thousandifiedDistance.substr(0, decimalPointIndex) + "." + thousandifiedDistance.substr(decimalPointIndex + 1, thousandifiedDistance.length);
-    $("#stuff-" + id + " .force").html("at " + distanceInMeters + " m");
+  // distance is in meters
+  function showDistance(id, distance) {
+    var units;
+    var distanceInUnits;
+
+    if (distance < 10) {
+      // meters with millimeters
+      var distanceInMillimeters = distance.times(1000).toFixed(0); // string_thousands doesn't work well with decimal digits
+      var thousandifiedDistance = string_thousands(distanceInMillimeters);
+      var decimalPointIndex = thousandifiedDistance.lastIndexOf(",");
+      units = "m";
+      distanceInUnits = thousandifiedDistance.substr(0, decimalPointIndex) + "." + thousandifiedDistance.substr(decimalPointIndex + 1, thousandifiedDistance.length);
+    } else if (distance < 1000) {
+      // meters
+      units = "m";
+      distanceInUnits = string_thousands(distance.toFixed(0));
+    } else if (distance < 10000) {
+      // km with meters
+      var thousandifiedDistance = string_thousands(distance.toFixed(0));
+      var decimalPointIndex = thousandifiedDistance.lastIndexOf(",");
+      units = "km";
+      distanceInUnits = thousandifiedDistance.substr(0, decimalPointIndex) + "." + thousandifiedDistance.substr(decimalPointIndex + 1, thousandifiedDistance.length);
+    } else {
+      // km
+      units = "km";
+      distanceInUnits = string_thousands(distance.div(1000).toFixed(0));
+    }
+
+    var distanceInMeters = distance.toFixed(0);
+    $("#stuff-" + id + " .distance").html("at " + distanceInUnits + " " + units);
   }
 
-  function hideForce(id) {
-    $("#stuff-" + id + " .force").html("");
+  function hideDistance(id) {
+    $("#stuff-" + id + " .distance").html("");
   }
 
   // print "number" with "digits" decimal digits
@@ -80,12 +114,13 @@ $(document).ready(function () {
   function distanceAndForce() {
     var now = new Date().getTime() / 86400000 + 2440587.5; // Julian day
     var distanceKm = Big(kmToPlanet(now, selectedPlanet.id));
-    var distance = distanceKm.times(thousand);
+    var distance = distanceKm.times(thousand); // meters
     var planetForce = forceBase.times(selectedPlanet.mass).div(distance).div(distance);
     var m2kg = forceBase.div(planetForce);
 
     $("#distance").html(string_thousands(distanceKm.toFixed(0)));
-    // display 5 non zero digits
+
+    // display the force with 5 non zero decimal digits
     var force = planetForce.toFixed(20);
     var i = 2;
     for (; i < force.length && force[i] == "0"; i++) {}
@@ -94,9 +129,7 @@ $(document).ready(function () {
     stuff.forEach(function (thing) {
       if (stuffStatus[thing.id].compute) {
         equivalentDistance = m2kg.times(thing.mass).sqrt();
-        showForce(thing.id, equivalentDistance);
-        //console.log(printf("  %22s at %22.14f m", thing.name, equivalentDistance));
-        // TODO update the distance of the thing
+        showDistance(thing.id, equivalentDistance);
       }
     });
   }
@@ -117,6 +150,8 @@ $(document).ready(function () {
           $("#large-objects").fadeIn(250);
           $("#medium-objects").fadeIn(250);
           $("#large-animals").fadeIn(250);
+          $(".show").show();
+          $(".more a").show();
           $("#reset-planet").on("click", function () {
             clearInterval(updateDistanceAndForce);
             selectedPlanet = undefined;
@@ -128,11 +163,14 @@ $(document).ready(function () {
             $("#large-objects").fadeOut(250);
             $("#medium-objects").fadeOut(250);
             $("#large-animals").fadeOut(250);
-            for (var i = 1; i <= stuff.length; i++) {
-              stuffStatus[i] = { visible: false, compute: false };
-              // hide all objects removeClass addClass
-              // empty all distances
-            }
+            stuffStatus = resetStuffStatus(stuff);
+            $(".show").removeClass("show").addClass("hide");
+            $(".hide").hide();
+            $("#stuff-1").removeClass("hide").addClass("show");
+            $("#stuff-5").removeClass("hide").addClass("show");
+            $("#stuff-9").removeClass("hide").addClass("show");
+            $(".distance").html("");
+            $(".more").show();
           });
           var updateDistanceAndForce = setInterval(distanceAndForce, 1000);
         }});
@@ -172,7 +210,7 @@ $(document).ready(function () {
     var compute = !stuffStatus[id].compute;
     stuffStatus[id].compute = compute;
     if (!compute) {
-      hideForce(id);
+      hideDistance(id);
       // TODO fadeOut the thing, hide the distance display for the thing, show the more things prompt
     }
   });

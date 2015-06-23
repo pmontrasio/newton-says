@@ -105,14 +105,17 @@ p {
     color: #414042;
 }
 
-.kg {
-    display: block;
-    margin-top: 22px;
-    font-size: 120%;
+.name {
     font-weight: bold;
 }
 
-.force {
+.kg {
+    display: block;
+    margin-top: 22px;
+    font-size: 130%;
+}
+
+.distance {
     display: block;
     margin-top: 22px;
     font-size: 150%;
