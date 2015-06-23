@@ -134,6 +134,8 @@ $(document).ready(function () {
     });
   }
 
+  var updateDistanceAndForce;
+
   //for (var planet of planets.values()) {
   planets.forEach(function (planet) {
     planet.img.on("click", function () {
@@ -152,30 +154,31 @@ $(document).ready(function () {
           $("#large-animals").fadeIn(250);
           $(".show").show();
           $(".more a").show();
-          $("#reset-planet").on("click", function () {
-            clearInterval(updateDistanceAndForce);
-            selectedPlanet = undefined;
-            $(".planet-name").html("");
-            $("#selected-planet").fadeOut(250);
-            $(".question-2").fadeOut(250);
-            $("#question-1").fadeIn(250);
-            $("#planets").fadeIn(250);
-            $("#large-objects").fadeOut(250);
-            $("#medium-objects").fadeOut(250);
-            $("#large-animals").fadeOut(250);
-            stuffStatus = resetStuffStatus(stuff);
-            $(".show").removeClass("show").addClass("hide");
-            $(".hide").hide();
-            $("#stuff-1").removeClass("hide").addClass("show");
-            $("#stuff-5").removeClass("hide").addClass("show");
-            $("#stuff-9").removeClass("hide").addClass("show");
-            $(".distance").html("");
-            $(".more").show();
-          });
-          var updateDistanceAndForce = setInterval(distanceAndForce, 1000);
+          updateDistanceAndForce = setInterval(distanceAndForce, 1000);
         }});
       }});
     });
+  });
+
+  $("#reset-planet").on("click", function () {
+    clearInterval(updateDistanceAndForce);
+    selectedPlanet = undefined;
+    $(".planet-name").html("");
+    $("#selected-planet").fadeOut(250);
+    $(".question-2").fadeOut(250);
+    $("#question-1").fadeIn(250);
+    $("#planets").fadeIn(250);
+    $("#large-objects").fadeOut(250);
+    $("#medium-objects").fadeOut(250);
+    $("#large-animals").fadeOut(250);
+    stuffStatus = resetStuffStatus(stuff);
+    $(".show").removeClass("show").addClass("hide");
+    $(".hide").hide();
+    $("#stuff-1").removeClass("hide").addClass("show");
+    $("#stuff-5").removeClass("hide").addClass("show");
+    $("#stuff-9").removeClass("hide").addClass("show");
+    $(".distance").html("");
+    $(".more").show();
   });
 
   stuff.forEach(function (thing) {
