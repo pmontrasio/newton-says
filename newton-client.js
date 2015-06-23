@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $("html, body").animate({ scrollTop: 0 }, 500);
   var Big = require("big.js");
   Big.DP = 30; // the digits of precision for divisions
   var printf = require("printf");
@@ -127,6 +128,11 @@ $(document).ready(function () {
             $("#large-objects").fadeOut(250);
             $("#medium-objects").fadeOut(250);
             $("#large-animals").fadeOut(250);
+            for (var i = 1; i <= stuff.length; i++) {
+              stuffStatus[i] = { visible: false, compute: false };
+              // hide all objects removeClass addClass
+              // empty all distances
+            }
           });
           var updateDistanceAndForce = setInterval(distanceAndForce, 1000);
         }});
@@ -171,5 +177,19 @@ $(document).ready(function () {
     }
   });
 
-  // TODO click sui more things prompts
+  $(".more a").on("click", function () {
+    var more = $(this);
+    var nextStuff = more.parents("div.objects").children("p.hide:first");
+    var nextStuffImage = nextStuff.find("img");
+    var id = parseInt(nextStuffImage.data("stuff"), 10);
+    stuffStatus[id].visible = true;
+    nextStuff.fadeIn(250);
+    nextStuff.removeClass("hide").addClass("show");
+    $("html, body").animate({ scrollTop: nextStuff.offset().top }, 500);
+    if (more.parents("div.objects").children("p.hide:first").length == 0) {
+      more.fadeOut(250);
+    }
+    return false;
+  });
+
 });
