@@ -164,6 +164,7 @@ $(document).ready(function () {
         $("#selected-planet").fadeIn({duration: 1000, complete: function () {
           distanceAndForce();
           $(".question-2").fadeIn(250);
+          $("#reset-planet").css({visibility: "visible"});
           $("#large-objects").fadeIn(250);
           $("#medium-objects").fadeIn(250);
           $("#large-animals").fadeIn(250);
@@ -180,6 +181,7 @@ $(document).ready(function () {
     selectedPlanet = undefined;
     $(".planet-name").html("");
     $("#selected-planet").fadeOut(250);
+    $("#reset-planet").css({visibility: "hidden"});
     $(".question-2").fadeOut(250);
     $("#question-1").fadeIn(250);
     $("#planets").fadeIn(250);

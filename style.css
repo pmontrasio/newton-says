@@ -65,11 +65,15 @@ p {
     position: relative;
 }
 
+#second-object p {
+    margin-bottom: 0;
+}
+
 #reset-planet {
-    position: absolute;
-    top: 0;
-    right: 0;
+    visibility: hidden;
+    text-align: right;
     cursor: pointer;
+    margin: 0;
 }
 
 #what {
@@ -218,20 +222,6 @@ p {
     #planets { text-align: center; }
     #planets-scale { display: block; text-align: right; }
 }
-/*
-@media screen and (min-width: 930px) and (max-width: 1000px) {
-    #planets { position: relative; height: 1000px }
-    #planets img { position: absolute; }
-    #planet-mercury { left: 0px; top: 870px; }
-    #planet-venus { left: 19%; top: 651px; z-index: 2}
-    #planet-mars { left: 70%; top: 794px; z-index: 3}
-    #planet-jupiter { left: 44%; top: 276px; z-index: 1}
-    #planet-saturn { left: -20px; top: 48px; }
-    #planet-uranus { left: 57%; top: 127px; }
-    #planet-neptune { left: 72%; top: 16px; }
-    #planet-pluto { left: 91%; top: 32px; }
-}
-*/
 @media screen and (min-width: 1000px) {
     #planets { position: relative;  height: 800px; }
     #planets img { position: absolute; }
