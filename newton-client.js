@@ -111,9 +111,7 @@ $(document).ready(function () {
         computedObjects++;
       }
     });
-    if ($("#first-distance").length == 1) {
-      $("#first-distance").remove();
-    }
+    $("#first-distance").remove();
     setTimeout(function () {
       $("p.show .distance").first().after('<p id="first-distance" class="small">pulls with the same force of ' +
                                           selectedPlanet.name + "</p>");
@@ -180,6 +178,7 @@ $(document).ready(function () {
     clearInterval(updateDistanceAndForce);
     selectedPlanet = undefined;
     $(".planet-name").html("");
+    $("#first-distance").remove();
     $("#selected-planet").fadeOut(250);
     $("#reset-planet").css({visibility: "hidden"});
     $(".question-2").fadeOut(250);
