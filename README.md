@@ -1,11 +1,15 @@
-= newton-says
+newton-says
+===========
 
 Source code for http://connettiva.eu/newton/
 
-The required files planet.js, planet.js.mem and planet.js.symbols are built by the code in the astronomical-almanac-js repository.
-A working version is provided in this repository but refer to astronomical-almanac-js for the latest one.
+The required files ```planet.js```, ```planet.js.mem``` and ```planet.js.symbols``` are built by the code
+in the [astronomical-almanac-js](https://github.com/pmontrasio/astronomical-almanac-js) repository.
 
-== Building, running and deploying
+A working version is provided in this repository but refer to [astronomical-almanac-js](https://github.com/pmontrasio/astronomical-almanac-js) for the latest one.
+
+Building, running and deploying
+-------------------------------
 
 There is nothing to build.
 
@@ -29,11 +33,12 @@ This script automates it:
     ./node_modules/.bin/browserify newton-client.js | uglifyjs -c -m > newton-client.bundle.js
     rsync -av --files-from=MANIFEST ./ your_account@your_server:/your/directory/newton
 
-== TO DO
+TO DO
+-----
 
-Find a way to include planet.js into the bundle.
+Find a way to include ```planet.js``` into the bundle.
 
-== License
+License
+-------
 
-This web app is (C) Paolo Montrasio 2015 and is licensed under the GNU Affero General Public License 3.0
-http://www.gnu.org/licenses/agpl-3.0.txt
+This web app is (C) Paolo Montrasio 2015 and is licensed under the [GNU Affero General Public License 3.0](http://www.gnu.org/licenses/agpl-3.0.txt).
