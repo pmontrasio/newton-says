@@ -22,6 +22,11 @@ p {
 
 #newton-formula {
     font-size: 32px;
+    margin-top: 0;
+}
+
+#newton-formula div.MathJax_Display {
+    margin-top: 0;
 }
 
 #human-image {
