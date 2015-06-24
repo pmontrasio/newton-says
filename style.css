@@ -79,6 +79,8 @@ p {
 
 .objects img {
     cursor: pointer;
+    max-width: 100%;
+    height: auto;
 }
 
 .objects p {
