@@ -61,7 +61,7 @@
 
     <div class="container question-2">
       <p class="center">The force it exerts on our average human being is very small,
-        <span id="force"></span>
+        <span class="force-value"></span>
         <span title="N is the unit of measurement of force. Its name is Newton. How appropriate!">N</span>
         if you like numbers.</p>
       <p class="center small color-2">As a comparison, a 1 liter bottle of water pushes down against your hand with a force of about 10 N.</p>
@@ -69,7 +69,7 @@
 
     <div class="question-2" id="what">
       <h1 class="center">What does it compare to?</h1>
-      <p class="center">What moving objects on Earth have a similar gravitational pull on us?</p>
+      <p class="center">What moving objects on Earth pulls on us with the same gravitational force?</p>
       <p class="center">The fun begins. Pick any of the objects below.</p>
     </div>
 
@@ -183,8 +183,28 @@
       <p class="more"><a href="#" class="small">More animals</a></p>
     </div>
 
-    <div id="credits">
-      <p class="title">Images</p>
+    <div id="share" class="question-2">
+      <p class="center">If you liked this page share it on Twitter, Facebook, Google+ and anywhere by pasting this link and hashtag</p>
+      <p id="social" class="center">http://connettiva.eu/newton/ #newtonsays</p>
+      <p class="center large">Thank you!</p>
+      </p>
+    </div>
+
+    <div id="btw" class="footer">
+      <p id="btw-1" class="question-2">By the way, did you notice <a href="#">that...?</a></p>
+      <p id="btw-2">By the way, did you notice that the formula for the gravitational force means that
+        <span class="planet-name"></span> pulls you with <span class="force-value"></span> N and you pull <span class="planet-name"></span>
+        with the same force? <a href="#">How it can be?</a></p>
+      <p id="btw-3">That would mean that you pull Earth upwards as much as Earth pulls you downwards. That's obviously false.
+        <a href="#">Or maybe not?</a></p>
+      <p id="btw-4">Well, actually it's true. But how it comes that we fall to the ground if we miss a step and Earth doesn't "fall" upwards to us through the floor?
+        Easy. <a href="#">Do you remember that other Newton's law</a> \(F = {m \times a}\)?</p>
+      <p id="btw-5">The force is the same but the mass is different so the accelerations are also different. The mass of Earth is about 85,314,285,714,285,714,285,714 times larger than yours (really, if your mass is 70 kg.) You are accelerated towards Earth at 9.81 \(m/s^2\) and Earth is accelerated towards you that huge number of times less. It's so close to zero that Earth doesn't notice it and doesn't move. We do notice those 9.81 \(m/s^2\) and fall to the ground quickly whenever we're not careful.
+      </p>
+
+    </div>
+    <div id="credits" class="footer">
+      <p class="title">Credits for the Images</p>
       <p>
         Newton: cropped from <a href="https://www.flickr.com/photos/olga-lednichenko-photos-albums-images/6417814081/">this source</a> (<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.)
         Average human: the icon is made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> and licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>, <a href="http://www.flaticon.com/free-icon/photography-portrait-mode_61387">source</a>.
@@ -201,10 +221,10 @@
       </p>
 
       <p class="title">Source code</p>
-      <p>The algorithm for the distance of planets from Earth: extracted from the Debian package <a href="https://packages.debian.org/source/sid/astronomical-almanac">astronomical-almanac 5.6</a> copyright &copy; 2005 by Stephen L. Moshier and licensed under <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">version 2.0 of the GNU General Public License</a>. The other source code of this page (JavaScript, HTML, CSS) copyright &copy; 2015 by Paolo Montrasio and licensed under <a href="http://www.gnu.org/licenses/agpl-3.0.en.html">GNU Affero General Public License version 3</a>. Also using <a href="https://github.com/MikeMcl/big.js/">big.js</a>, <a href="https://github.com/wdavidw/node-printf">printf</a> and a number thousandification snippet from <a href="http://yal.cc/string_thousands/">here</a>.</p>
+      <p>The algorithm for the distance of planets from Earth: extracted from the Debian package <a href="https://packages.debian.org/source/sid/astronomical-almanac">astronomical-almanac 5.6</a> copyright &copy; 2005 by Stephen L. Moshier and licensed under <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">version 2.0 of the GNU General Public License</a>. That package converted to <a href="http://asmjs.org/">asm.js</a> is available here. The source code of this page (JavaScript, HTML, CSS) copyright &copy; 2015 by Paolo Montrasio and licensed under <a href="http://www.gnu.org/licenses/agpl-3.0.en.html">GNU Affero General Public License version 3</a> and can be downloaded from <a href="">here</a>. Also using <a href="https://www.mathjax.org/">MathJax</a>, <a href="https://github.com/MikeMcl/big.js/">big.js</a>, <a href="https://github.com/wdavidw/node-printf">printf</a>,<a href="https://jquery.com/">jQuery</a> and a number thousandification snippet from <a href="http://yal.cc/string_thousands/">here</a>.</p>
 
       <p class="title">Misc</p>
-      <p>The mass of planets, objects and animals: from various Wikipedia pages. Absolute precision is not required for the purpose of this page. Research them yourself if you need truly correct values.</p>
+      <p>The mass of planets, objects and animals have been collected from various Wikipedia pages. Absolute precision is not required for the purpose of this page. Research them yourself if you need truly correct values.</p>
 
       <p class="title center">Web site by <a href="http://www.connettiva.eu/index-en.html">Connettiva</a> &mdash; P.IVA. 05411020968</p>
     </div>

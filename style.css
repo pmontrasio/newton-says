@@ -86,6 +86,10 @@ p {
     padding: 44px 0 66px 0;
 }
 
+#first-distance {
+    padding: 0;
+}
+
 #large-objects {
     display: none;
     padding-top: 22px;
@@ -118,8 +122,9 @@ p {
 .distance {
     display: block;
     margin-top: 22px;
-    font-size: 150%;
+    font-size: 0px;
     font-weight: bold;
+    transition: font 0.3s ease 0s;
 }
 
 .show {
@@ -129,37 +134,37 @@ p {
     display: none;
 }
 
-#credits {
+.footer {
     padding: 50px 20px 20px 20px;
     font-size: 14px;
     line-height: 18px;
     color: #888;
 }
 
-#credits p {
+.footer p {
     margin: 0;
 }
 
-#credits .title-large {
+.footer .title-large {
     font-weight: bold;
     font-size: 16px;
     padding-top: 30px;
 }
 
-#credits .title {
+.footer .title {
     font-weight: bold;
     padding-top: 30px;
 }
 
-#credits a {
+.footer a {
     color: #888;
 }
 
-#credits a:visited {
+.footer a:visited {
     color: #888;
 }
 
-#credits a:hover {
+.footer a:hover {
     color: #FFF5D2;
 }
 
@@ -272,6 +277,40 @@ p {
     font-size: 70%;
 }
 
+.large {
+    font-size: 130%;
+}
+
 .color-2 {
     color: #FFF5D2;
+}
+
+#btw-1 {
+    display: none;
+}
+
+#btw-2 {
+    display: none;
+}
+
+#btw-3 {
+    display: none;
+}
+
+#btw-4 {
+    display: none;
+}
+
+#btw-5 {
+    display: none;
+}
+
+#share {
+    line-height: 32px;
+}
+
+#social {
+    font-size: 150%;
+    color: #FFF5D2;
+    padding: 4px;
 }

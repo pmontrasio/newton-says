@@ -97,13 +97,27 @@ $(document).ready(function () {
       units = "km";
       distanceInUnits = string_thousands(distance.div(1000).toFixed(0));
     }
-
-    var distanceInMeters = distance.toFixed(0);
-    $("#stuff-" + id + " .distance").html("at " + distanceInUnits + " " + units);
+    $("#stuff-" + id + " .distance").html("at " + distanceInUnits + " " + units).css({fontSize: "150%"});
   }
 
   function hideDistance(id) {
-    $("#stuff-" + id + " .distance").html("");
+    $("#stuff-" + id + " .distance").css({fontSize: "0px"}).html("");
+  }
+
+  function tagFirstDistance() {
+    var computedObjects = 0;
+    stuff.forEach(function (thing) {
+      if (stuffStatus[thing.id].compute) {
+        computedObjects++;
+      }
+    });
+    if ($("#first-distance").length == 1) {
+      $("#first-distance").remove();
+    }
+    setTimeout(function () {
+      $("p.show .distance").first().after('<p id="first-distance" class="small">pulls with the same force of ' +
+                                          selectedPlanet.name + "</p>");
+    }, 1000);
   }
 
   // print "number" with "digits" decimal digits
@@ -124,7 +138,7 @@ $(document).ready(function () {
     var force = planetForce.toFixed(20);
     var i = 2;
     for (; i < force.length && force[i] == "0"; i++) {}
-    $("#force").html(force.substr(0, i + 5));
+    $(".force-value").html(force.substr(0, i + 5));
 
     stuff.forEach(function (thing) {
       if (stuffStatus[thing.id].compute) {
@@ -132,6 +146,7 @@ $(document).ready(function () {
         showDistance(thing.id, equivalentDistance);
       }
     });
+
   }
 
   var updateDistanceAndForce;
@@ -210,12 +225,21 @@ $(document).ready(function () {
     var id = parseInt(element.data("stuff"), 10);
     // se è compute false, significa che era visibile ma non ancora cliccato e quindi niente distanza: si mostra la distanza
     // se è compute true, aveva la distanza calcolata: si nasconde
-    var compute = !stuffStatus[id].compute;
-    stuffStatus[id].compute = compute;
-    if (!compute) {
-      hideDistance(id);
-      // TODO fadeOut the thing, hide the distance display for the thing, show the more things prompt
+    var compute = stuffStatus[id].compute;
+    var container = element.parent();
+    if (container.siblings(".show").length == 0 && compute) {
+      // if there are no other shown elements in this class of objects, don't allow to hide it
+      return;
     }
+    stuffStatus[id].compute = !compute; // when turned to true it allows the computation loop to display the distance
+    if (compute) {
+      hideDistance(id);
+      container.removeClass("show").addClass("hide").fadeOut({ duration: 250, complete: function () {
+        $("html, body").animate({ scrollTop: container.parent().children(".show").first().offset().top }, 500);
+      }});
+      container.siblings(".more").find("a").show();
+    }
+    tagFirstDistance();
   });
 
   $(".more a").on("click", function () {
@@ -233,4 +257,30 @@ $(document).ready(function () {
     return false;
   });
 
+  $("#btw-1 a").on("click", function () {
+    $("#btw-1").fadeOut({duration: 250, complete: function () {
+      var colors = {color: "#ffffff", fontSize: "18px", lineHeight: "22px"};
+      $("#btw").css(colors);
+      $("#btw a").css(colors);
+      $("#btw-2").fadeIn(250);
+    }});
+    return false;
+  });
+  $("#btw-2 a").on("click", function () {
+    $("#btw-2 a").fadeOut({duration: 250, complete: function () {
+      $("#btw-3").fadeIn(250);
+    }});
+    return false;
+  });
+  $("#btw-3 a").on("click", function () {
+    $("#btw-3 a").fadeOut({duration: 250, complete: function () {
+      $("#btw-4").fadeIn(250);
+    }});
+    return false;
+  });
+  $("#btw-4 a").on("click", function () {
+    $("#btw-4 a").replaceWith("Do you remember that other Newton's law");
+    $("#btw-5").fadeIn(250);
+    return false;
+  });
 });
