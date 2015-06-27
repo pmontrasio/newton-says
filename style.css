@@ -22,7 +22,6 @@ p {
 
 #newton-formula {
     font-size: 32px;
-    margin-top: 0;
 }
 
 #newton-formula div.MathJax_Display {
@@ -98,8 +97,9 @@ p {
     padding: 44px 0 66px 0;
 }
 
-#first-distance {
+.first-distance {
     padding: 0;
+    visibility: hidden;
 }
 
 #large-objects {

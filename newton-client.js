@@ -111,10 +111,9 @@ $(document).ready(function () {
         computedObjects++;
       }
     });
-    $("#first-distance").remove();
+    $(".first-distance").css({ visibility: "hidden" });
     setTimeout(function () {
-      $("p.show .distance").first().after('<p id="first-distance" class="small">pulls with the same force of ' +
-                                          selectedPlanet.name + "</p>");
+      $(".distance:not(:empty)").first().parent().find(".first-distance").css({ visibility: "visible" });
     }, 1000);
   }
 
