@@ -8,10 +8,12 @@ in the [astronomical-almanac-js](https://github.com/pmontrasio/astronomical-alma
 
 A working version is provided in this repository but refer to [astronomical-almanac-js](https://github.com/pmontrasio/astronomical-almanac-js) for the latest one.
 
-Building, running and deploying
+Configuring, building, running and deploying
 -------------------------------
 
-There is nothing to build.
+Configuration: edit the facebook meta tags at the beginning of ```index.html```, especially the app id: you want to use your one, start at https://developers.facebook.com/apps
+
+Build: there is nothing to build.
 
 The prerequisites to running the web app locally and to deploying it on a remote server are
 
@@ -24,7 +26,11 @@ The prerequisites to running the web app locally and to deploying it on a remote
 
 To run the web app
 
-    beefy newton-client.js:newton-client.bundle.js
+    beefy newton-client.js:newton-client.bundle.js # listens on 127.0.0.1:9966
+
+or something like this to test with a phone/tablet
+
+    beefy newton-client.js:newton-client.bundle.js --url http://192.168.1.131:9966
 
 To deploy it on a server you can copy the files listed in MANIFEST.
 This script automates it:
@@ -36,7 +42,7 @@ This script automates it:
 TO DO
 -----
 
-Find a way to include ```planet.js``` into the bundle.
+Find a way to include ```planet.js``` into the bundle instead of loading it separately.
 
 License
 -------

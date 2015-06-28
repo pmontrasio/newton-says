@@ -3,6 +3,20 @@
     <title>Newton says...</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Newton says...">
+    <meta property="og:site_name" content="Newton says...">
+    <meta property="og:url" content="http://www.connettiva.eu/newton">
+    <meta property="og:description" content="Planets pull us with their gravitational force but how much is that and what other closer common objects have the same gravitational pull on us? Which is more: Jupiter or a cruise ship in the harbour? Venus or an elephant in an African photo tour? Find it out with a couple of clicks. ">
+    <meta property="fb:app_id" content="879136318828624">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="https://www.facebook.com/paolo.montrasio">
+    <meta property="article:publisher" content="http://www.connettiva.eu/">
+    <meta property="og:image" content="http://www.connettiva.eu/newton/images/facebook.jpg">
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css" type="text/css">
     <script type="text/javascript"
@@ -11,6 +25,24 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="planet.js"></script>
     <script type="text/javascript" src="newton-client.bundle.js"></script>
+    <script type="text/javascript">
+     window.fbAsyncInit = function() {
+       FB.init({
+         appId      : '879136318828624',
+         xfbml      : true,
+         version    : 'v2.3'
+       });
+     };
+
+     (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+    </script>
+
   </head>
   <body>
     <h1 class="container">Newton says...</h1>
