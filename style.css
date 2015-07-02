@@ -222,29 +222,6 @@ p {
     text-decoration: underline;
 }
 
-/* TODO use media queries to arrange the planets differently for different screen widths */
-@media screen and (max-width: 1000px) {
-    #planets { text-align: center; }
-    #planets-scale { display: block; text-align: right; }
-}
-@media screen and (min-width: 1000px) {
-    #planets { position: relative;  height: 800px; }
-    #planets img { position: absolute; }
-    #planet-mercury { left: 0px; top: 670px; }
-    #planet-venus { left: 13%; top: 451px; }
-    #planet-mars { left: 50%; top: 552px; z-index: 1}
-    #planet-jupiter { left: 61%; top: 224px; }
-    #planet-saturn { left: -20px; top: 123px; }
-    #planet-uranus { left: 57%; top: 71px; }
-    #planet-neptune { left: 75%; top: 16px; }
-    #planet-pluto { left: 91%; top: 32px; }
-    #planets-scale {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-}
-
 .question-2 {
     display: none;
 }
@@ -265,6 +242,10 @@ p {
 
 .center {
     text-align: center;
+}
+
+.left {
+    text-align: left;
 }
 
 .right {
@@ -311,4 +292,62 @@ p {
     font-size: 150%;
     color: #FFF5D2;
     padding: 4px;
+}
+
+/* http://www.himpfen.com/colour-size-facebook-like-buttons/ */
+
+.fb-like {
+    left: 100px;
+    transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+}
+
+.fb-like {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    /* the short way of doing this is margin: 25px auto; */
+}
+
+
+/* TODO use media queries to arrange the planets differently for different screen widths */
+
+@media screen and (max-width: 400px) {
+    .container { margin: 4px; }
+    #newton-image { float: none; margin-right: 0; width: 100%; }
+    #planets { text-align: center; }
+    #planet-venus { width: 100%; }
+    #planet-jupiter { width: 100%; }
+}
+
+@media screen and (max-width: 480px) {
+    .container { margin: 4px; }
+    #newton-image { float: none; margin-right: 0; width: 100%; }
+    #newton-formula { font-size: 28px; }
+    #planets { text-align: center; }
+    #planet-saturn { width: 100%; }
+}
+
+@media screen and (max-width: 1000px) {
+    #planets { text-align: center; }
+    #planets-scale { display: block; text-align: right; }
+}
+@media screen and (min-width: 1000px) {
+    #planets { position: relative;  height: 800px; }
+    #planets img { position: absolute; }
+    #planet-mercury { left: 0px; top: 670px; }
+    #planet-venus { left: 13%; top: 451px; }
+    #planet-mars { left: 50%; top: 552px; z-index: 1}
+    #planet-jupiter { left: 61%; top: 224px; }
+    #planet-saturn { left: -20px; top: 123px; }
+    #planet-uranus { left: 57%; top: 71px; }
+    #planet-neptune { left: 75%; top: 16px; }
+    #planet-pluto { left: 91%; top: 32px; }
+    #planets-scale {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 }

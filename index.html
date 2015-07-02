@@ -46,11 +46,11 @@
   </head>
   <body>
     <h1 class="container">Newton says...</h1>
-    <div class="clear-both container">
+    <div class="clear-both container center">
       <img id="newton-image" src="images/newton.jpg">
       <!-- http://ctan.mirror.garr.it/mirrors/CTAN/info/gentle/gentle.pdf -->
       <p id="newton-formula">$$F = {G \times { {m_1 \times m_2} \over d^2}}$$</p>
-      <p>Scary? Don't panic. It means that to know the amount of gravitational force between two objects you multiply the mass of the two objects together (\(m_1\) times \(m_2\)) then divide the result by the distance between them (\(d\)), and again by the distance. Finally, you multiply by a number called \(G\) which has the exact value needed to get the force right. Easy stuff. Let's play with it.</p>
+      <p class="left">Scary? Don't panic. It means that to know the amount of gravitational force between two objects you multiply the mass of the two objects together (\(m_1\) times \(m_2\)) then divide the result by the distance between them (\(d\)), and again by the distance. Finally, you multiply by a number called \(G\) which has the exact value needed to get the force right. Easy stuff. Let's play with it.</p>
     </div>
 
     <div id="first-object" class="clear-both container">
@@ -234,6 +234,19 @@
       <p id="social" class="center">http://connettiva.eu/newton/ #newtonsays</p>
       <p class="center large">Thank you!</p>
       </p>
+    </div>
+
+    <div class="container">
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) return;
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=879136318828624";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));</script>
+
+      <div class="fb-like center" data-href="http://www.connettiva.eu/newton/" data-width="800" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true" data-colorscheme="dark"></div>
     </div>
 
     <div id="btw" class="footer">
