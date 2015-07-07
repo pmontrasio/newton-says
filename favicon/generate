@@ -1,0 +1,17 @@
+convert favicon.png -resize 16x16 favicon-16x16.png
+convert favicon.png -resize 32x32 favicon-32x32.png
+convert favicon.png -resize 48x48 favicon-48x48.png
+convert favicon.png -resize 57x57 favicon-57x57.png
+convert favicon.png -resize 60x60 favicon-60x60.png
+convert favicon.png -resize 64x64 favicon-64x64.png
+convert favicon.png -resize 72x72 favicon-72x72.png
+convert favicon.png -resize 76x76 favicon-76x76.png
+convert favicon.png -resize 96x96 favicon-96x96.png
+convert favicon.png -resize 114x114 favicon-114x114.png
+convert favicon.png -resize 120x120 favicon-120x120.png
+convert favicon.png -resize 128x128 favicon-128x128.png
+convert favicon.png -resize 144x144 favicon-144x144.png
+convert favicon.png -resize 152x152 favicon-152x152.png
+convert favicon.png -resize 180x180 favicon-180x180.png
+# sudo apt-get install icoutils
+icotool -c favicon-16x16.png favicon-32x32.png favicon-48x48.png favicon-64x64.png -o ../favicon.ico

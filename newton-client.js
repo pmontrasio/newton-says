@@ -148,6 +148,10 @@ $(document).ready(function () {
 
   var updateDistanceAndForce;
 
+  function eToPowerOf10(bigNumber) {
+    return bigNumber.toString().replace("e+", "\\times 10^{") + "}";
+  }
+
   //for (var planet of planets.values()) {
   planets.forEach(function (planet) {
     planet.img.on("click", function () {
@@ -155,6 +159,9 @@ $(document).ready(function () {
       selectedPlanet = planet;
       $("#question-1").hide();
       $(".planet-name").html(planet.name);
+      var planetMass = MathJax.Hub.getAllJax("planet-mass")[0];
+      MathJax.Hub.Queue(["Text", planetMass , eToPowerOf10(planet.mass)]);
+      //$("#planet-mass").html("= \{" + planet.mass + " kg");
       $("html, body").animate({ scrollTop: $("#first-object").offset().top }, 500);
       $("#planets").fadeOut({duration: 1000, complete: function () {
         $(".planet-image").attr({src: planet.img.attr("src")});
